@@ -13,60 +13,9 @@ function onLoad(){
     displayBagSummary();
 }
 
-function placeOrder(){
-    let orderTextEl = document.querySelector(".place-order-text");
-    
-    orderTextEl.textContent = "ORDER PLACED!!";
-    cartItems=[];
-    localStorage.setItem('cartItems' , JSON.stringify(cartItems));
-    loadBagItemObjects();
-    displayBagItems();
-    displayBagSummary();
-    
-}
-
-function displayBagSummary(){
-    let bagSummaryEl = document.querySelector('.bag-summary');
-    let totalItem =cartItems.length;
-    let totalMRP=0;
-    let totalDiscount =0;
 
 
-    cartItems.forEach(bagItem => {
-      let index = items.findIndex(bagi =>  bagi.id == bagItem.product_id);
-        totalMRP +=  (items[index].original_price) * bagItem.quantity;
-        totalDiscount += ((items[index].original_price)*  bagItem.quantity)- (items[index].current_price * bagItem.quantity);
-    })
-    if(totalMRP==0){
-      convenience =0;
-      }
-      else{
-      convenience = 99;}
-     let finalPayment = totalMRP - totalDiscount +convenience;
-    bagSummaryEl.innerHTML = `<div class="bag-details-container">
-            <div class="price-header">PRICE DETAILS (${totalItem} Items) </div>
-            <div class="price-item">
-              <span class="price-item-tag">Total MRP</span>
-              <span class="price-item-value">₹ ${totalMRP}</span>
-            </div>
-            <div class="price-item">
-              <span class="price-item-tag">Discount on MRP</span>
-              <span class="price-item-value priceDetail-base-discount">₹${totalDiscount}</span>
-            </div>
-            <div class="price-item">
-              <span class="price-item-tag">Convenience Fee</span>
-              <span class="price-item-value">₹ ${convenience} </span>
-            </div>
-            <hr>
-            <div class="price-footer">
-              <span class="price-item-tag">Total Amount</span>
-              <span class="price-item-value">₹${finalPayment}</span>
-            </div>
-          </div>
-          <button class="btn-place-order" onClick = "placeOrder()">
-            <div class="">PLACE ORDER</div>
-          </button>`
-}
+
 
 function addProduct(){
 
@@ -88,11 +37,11 @@ function displayBagItems(){
     let innerHtml =''
     console.log(cartItems)
     cartItems.forEach(bagItem =>{
-        innerHtml = generateItemHtml(items, bagItem);
+        innerHtml += generateItemHtml(items, bagItem);
         //console.log(innerHtml)
-        containerEl.innerHTML += innerHtml;
+        
     });
-    
+    containerEl.innerHTML = innerHtml;
     
 }
 
@@ -101,8 +50,8 @@ function generateItemHtml(items, item){
   //const path = window.location.pathname;
   //return path.includes('bag.html') ? '../images' : '/images'
   let index = items.findIndex(eachItem => eachItem.id == item.product_id);
-  let image = getImagePath(items[index].id )
-console.log(image + items[index].image);
+  //let image = getImagePath(items[index].id )
+//console.log(image + items[index].image);
     return `<div class="bag-item-container">
             <div class="item-left-part">
               <img class="bag-item-img" src=${items[index].image} alt="product image">
@@ -180,3 +129,59 @@ function removeFromBag(itemId){
     displayBagItems();  
     displayBagSummary();
 };
+
+function displayBagSummary(){
+  let bagSummaryEl = document.querySelector('.bag-summary');
+  let totalItem =cartItems.length;
+  let totalMRP=0;
+  let totalDiscount =0;
+
+
+  cartItems.forEach(bagItem => {
+    let index = items.findIndex(bagi =>  bagi.id == bagItem.product_id);
+      totalMRP +=  (items[index].original_price) * bagItem.quantity;
+      totalDiscount += ((items[index].original_price)*  bagItem.quantity)- (items[index].current_price * bagItem.quantity);
+  })
+  if(totalMRP==0){
+    convenience =0;
+    }
+    else{
+    convenience = 99;}
+   let finalPayment = totalMRP - totalDiscount +convenience;
+  bagSummaryEl.innerHTML = `<div class="bag-details-container">
+          <div class="price-header">PRICE DETAILS (${totalItem} Items) </div>
+          <div class="price-item">
+            <span class="price-item-tag">Total MRP</span>
+            <span class="price-item-value">₹ ${totalMRP}</span>
+          </div>
+          <div class="price-item">
+            <span class="price-item-tag">Discount on MRP</span>
+            <span class="price-item-value priceDetail-base-discount">₹${totalDiscount}</span>
+          </div>
+          <div class="price-item">
+            <span class="price-item-tag">Convenience Fee</span>
+            <span class="price-item-value">₹ ${convenience} </span>
+          </div>
+          <hr>
+          <div class="price-footer">
+            <span class="price-item-tag">Total Amount</span>
+            <span class="price-item-value">₹${finalPayment}</span>
+          </div>
+        </div>
+        <button class="btn-place-order" onClick = "placeOrder()">
+          <div class="">PLACE ORDER</div>
+        </button>`
+}
+
+
+function placeOrder(){
+  let orderTextEl = document.querySelector(".place-order-text");
+  
+  orderTextEl.textContent = "ORDER PLACED!!";
+  cartItems=[];
+  localStorage.setItem('cartItems' , JSON.stringify(cartItems));
+  loadBagItemObjects();
+  displayBagItems();
+  displayBagSummary();
+  
+}
