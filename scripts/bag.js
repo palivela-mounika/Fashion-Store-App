@@ -88,7 +88,7 @@ function displayBagItems(){
     console.log(cartItems)
     cartItems.forEach(bagItem =>{
         innerHtml = generateItemHtml(items, bagItem);
-        console.log(innerHtml)
+        //console.log(innerHtml)
         containerEl.innerHTML += innerHtml;
     });
     
@@ -103,9 +103,11 @@ function generateItemHtml(items, item){
   //const path = window.location.pathname;
   //return path.includes('bag.html') ? '../images' : '/images'
   let index = items.findIndex(eachItem => eachItem.id == item.product_id);
+  let image = getImagePath(items[index].id )
+console.log(image + items[index].image);
     return `<div class="bag-item-container">
             <div class="item-left-part">
-              <img class="bag-item-img" src=${items[index].image} alt="product image">
+              <img class="bag-item-img" src=${image + items[index].image} alt="product image">
             </div>
             <div class="item-right-part">
               <div class="company">${items[index].company}</div>

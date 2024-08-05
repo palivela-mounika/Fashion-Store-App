@@ -67,7 +67,11 @@ function displayBagIcon(){
     
 } 
 
-
+function getImagePath(){
+    const path = window.location.pathname;
+    return path.includes('index.html') ? '/images' : '../images';
+  } 
+  
 
 function displayItemsOnHomePage(){
     let itemscontainerEl = document.querySelector
@@ -77,9 +81,10 @@ function displayItemsOnHomePage(){
     }
     let innerHtml='';
     items.forEach(item => {
+        let image = getImagePath(item.id);
     innerHtml += `
     <div class="item-container">
-        <img class="item-image" src="${item.image}" alt="item image">
+        <img class="item-image" src="${image + item.image}" alt="item image">
         <div class="rating">${item.rating.stars}⭐ |${item.rating.count}</div>
         <div class="company-name"> ${item.company}</div>
         <div class="item-name">${item.item_name}</div>
