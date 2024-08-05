@@ -85,10 +85,13 @@ function loadBagItemObjects(){
 function displayBagItems(){
     let containerEl = document.querySelector(".bag-items-container");
     let innerHtml =''
+    console.log(cartItems)
     cartItems.forEach(bagItem =>{
-        innerHtml += generateItemHtml(items, bagItem);
+        innerHtml = generateItemHtml(items, bagItem);
+        console.log(innerHtml)
+        containerEl.innerHTML += innerHtml;
     });
-    containerEl.innerHTML = innerHtml;
+    
     
 }
 
