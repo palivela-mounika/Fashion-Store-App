@@ -94,8 +94,14 @@ function displayBagItems(){
     
     
 }
+function getImagePath(){
+  const path = window.location.pathname;
+  return path.includes('bag.html') ? '../images' : '/images';
+} 
 
 function generateItemHtml(items, item){
+  //const path = window.location.pathname;
+  //return path.includes('bag.html') ? '../images' : '/images'
   let index = items.findIndex(eachItem => eachItem.id == item.product_id);
     return `<div class="bag-item-container">
             <div class="item-left-part">
