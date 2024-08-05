@@ -52,7 +52,7 @@ function generateItemHtml(items, item){
   let index = items.findIndex(eachItem => eachItem.id == item.product_id);
   //let image = getImagePath(items[index].id )
 //console.log(image + items[index].image);
-    return `<div class="bag-item-container">
+    return `<div class="">
             <div class="item-left-part">
               <img class="bag-item-img" src=${items[index].image} alt="product image">
             </div>
@@ -72,7 +72,8 @@ function generateItemHtml(items, item){
               <div class="return-period">
                 <span class="return-period-days">15 days</span> return available
               </div> 
-            </div> `           
+            </div> <hr>` 
+                    
 }
 
 /*<div class="remove-from-cart" onClick="removeFromBag(${item.product_id})">X</div>
@@ -177,11 +178,12 @@ function displayBagSummary(){
 function placeOrder(){
   let orderTextEl = document.querySelector(".place-order-text");
   
-  orderTextEl.textContent = "ORDER PLACED!!";
+  
   cartItems=[];
   localStorage.setItem('cartItems' , JSON.stringify(cartItems));
   loadBagItemObjects();
   displayBagItems();
+  displayBagIcon();
   displayBagSummary();
-  
+  orderTextEl.textContent = "ORDER PLACED!!";
 }
