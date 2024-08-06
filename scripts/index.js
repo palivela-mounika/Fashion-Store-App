@@ -14,9 +14,7 @@ function onLoad(){
     bagItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
     //bagItemsCount = bagItemsCountStr ? JSON.parse(bagItemsCountStr) : [];
     displayItemsOnHomePage();
-    displayBagIcon()
-    
-    
+    displayBagIcon()        
 }
 
 
@@ -69,8 +67,8 @@ function displayBagIcon(){
 
 function getIndexImagePath(imgFileName){
     const currentPage = window.location.pathname;
-    const basePath = currentPage.includes('index.html') ? '/images/' : '../images/';
-    return basePath + imgFileName;
+    const basePath = currentPage.includes('index.html') ? 'images/' : '../images/';
+    return "FashionStoreApp" +basePath + imgFileName;
   
 }
   
