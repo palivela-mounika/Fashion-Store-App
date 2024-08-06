@@ -45,6 +45,12 @@ function displayBagItems(){
     
 }
 
+function getImagePath(imgFileName){
+  const currentPage = window.location.pathname;
+  const basePath = currentPage.includes('bag.html') ? '../images/' : 'images/';
+  return basePath + imgFileName
+
+}
 
 function generateItemHtml(items, item){
   //const path = window.location.pathname;
@@ -54,7 +60,7 @@ function generateItemHtml(items, item){
 //console.log(image + items[index].image);
     return `<div class="">
             <div class="item-left-part">
-              <img class="bag-item-img" src=${items[index].image} alt="product image">
+              <img class="bag-item-img" src=${getImagePath(items[index].image)} alt="product image">
             </div>
             <div class="item-right-part">
               <div class="company">${items[index].company}</div>
