@@ -67,7 +67,7 @@ function displayBagIcon(){
 
 function getIndexImagePath(imgFileName){
     const currentPage = window.location.pathname;
-    const basePath = currentPage.includes('index.html') ? 'images/' : '../images/';
+    const basePath = currentPage.includes('index.html') ? './images/' : '../images/';
     return basePath + imgFileName;
   
 }
