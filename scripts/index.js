@@ -2,7 +2,7 @@ let bagItems;
 let bagItemsCount=[];
 let objlength=0;
 let cartItems=[];
-displayBagIcon();
+
 
 onLoad();
 
@@ -14,7 +14,7 @@ function onLoad(){
     bagItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
     //bagItemsCount = bagItemsCountStr ? JSON.parse(bagItemsCountStr) : [];
     displayItemsOnHomePage();
-    displayBagIcon();
+    displayBagIcon()
     
     
 }
@@ -52,7 +52,7 @@ function addToBag(id){
 
 
 function displayBagIcon(){
-    localStorage.getItem(JSON.parse(cartItems));
+    
     let bagCountEl = document.querySelector(".bag-items");
     let bagCount=0;
         for(let i=0;i<cartItems.length;i++){
