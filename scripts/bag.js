@@ -169,7 +169,7 @@ function displayBagSummary(){
             <span class="price-item-value">₹${finalPayment}</span>
           </div>
         </div>
-        <button class="btn-place-order" onClick = "placeOrder()">
+        <button class="btn-place-order" onClick="placeOrder()">
           <div class="">PLACE ORDER</div>
         </button>`
 }
@@ -177,8 +177,6 @@ function displayBagSummary(){
 
 function placeOrder(){
   let orderTextEl = document.querySelector(".place-order-text");
-  
-  
   cartItems=[];
   localStorage.setItem('cartItems' , JSON.stringify(cartItems));
   loadBagItemObjects();

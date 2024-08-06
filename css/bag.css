@@ -72,9 +72,14 @@
   cursor: pointer;
 }
 .place-order-text{
-  text-align: center;
-  margin-top: 15px;
-  color: rgb(255, 63, 108);
+  font-size: 20px;
+  color: rgb(248, 74, 126);
+display: flex;
+justify-content:center;
+height: 100%;
+align-items: center;
+text-align: center;
+
 }
 .bag-item-container {
   margin-bottom: 8px;
