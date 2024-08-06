@@ -52,7 +52,6 @@ function addToBag(id){
 
 
 function displayBagIcon(){
-    
     let bagCountEl = document.querySelector(".bag-items");
     let bagCount=0;
         for(let i=0;i<cartItems.length;i++){
@@ -70,7 +69,7 @@ function displayBagIcon(){
 
 function getIndexImagePath(imgFileName){
     const currentPage = window.location.pathname;
-    const basePath = currentPage.includes('index.html') ? 'images/' : '../images/';
+    const basePath = currentPage.includes('index.html') ? '/images/' : '../images/';
     return basePath + imgFileName;
   
 }

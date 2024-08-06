@@ -7,10 +7,10 @@ onLoad();
 function onLoad(){
   let cartItemsStr = localStorage.getItem('cartItems');
   cartItems = cartItemsStr ? JSON.parse(cartItemsStr) : [];
-  
     loadBagItemObjects();
     displayBagItems();
     displayBagSummary();
+    displayBagIcon();
 }
 
 
